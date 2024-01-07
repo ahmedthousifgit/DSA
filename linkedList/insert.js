@@ -64,7 +64,7 @@ class Node {
         let curr = this.head;
         let listValues = "";
         while (curr) {
-          listValues += `${curr.value}`;
+          listValues += `${curr.value} `;
           curr = curr.next;
         }
         console.log(listValues);
@@ -86,3 +86,5 @@ class Node {
   
   list.insert(40, 1);
   list.print();
+
+  console.log(list.removeFrom(10));
