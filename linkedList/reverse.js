@@ -156,5 +156,5 @@ class Node {
   list.print();
   
   list.reverse()
-  list.print()
+  list.print
   

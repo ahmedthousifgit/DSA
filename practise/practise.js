@@ -610,95 +610,138 @@
 // list.print()
 
 // doubly linked list
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.prev = null;
-    this.next = null;
-  }
-}
-class doublyLinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.size = 0;
-  }
-  isEmpty() {
-    return this.size === 0;
-  }
-  getSize() {
-    return this.size;
-  }
-  prepend(value) {
-    const node = new Node(value);
-    if (this.isEmpty()) {
-      this.head = node;
-      this.tail = node;
-    } else {
-      node.next = this.head;
-      this.head.prev = node;
-      this.head = node;
-    }
-    this.size++;
-  }
-  append(value) {
-    const node = new Node(value);
-    if (this.isEmpty()) {
-      this.head = node;
-      this.tail = node;
-    } else {
-      this.tail.next = node;
-      node.prev = this.tail;
-      this.tail = node;
-    }
-    this.size++;
-  }
-  removeFromFront(value) {
-    if (this.isEmpty()) {
-      return null;
-    } else {
-      const value = this.head.value;
-      this.head = this.head.next;
-      this.size--;
-      return value;
-    }
-  }
-  removeFromEnd(value) {
-    if (this.isEmpty()) {
-      return null;
-    }
-    if (this.size == 1) {
-      this.head = null;
-      this.tail = null;
-    } else {
-      value = this.tail.value;
-      this.tail = this.tail.prev;
-      this.tail.next = null;
-      this.size--
-      return value
-    }
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.prev = null;
+//     this.next = null;
+//   }
+// }
+// class doublyLinkedList {
+//   constructor() {
+//     this.head = null;
+//     this.tail = null;
+//     this.size = 0;
+//   }
+//   isEmpty() {
+//     return this.size === 0;
+//   }
+//   getSize() {
+//     return this.size;
+//   }
+//   prepend(value) {
+//     const node = new Node(value);
+//     if (this.isEmpty()) {
+//       this.head = node;
+//       this.tail = node;
+//     } else {
+//       node.next = this.head;
+//       this.head.prev = node;
+//       this.head = node;
+//     }
+//     this.size++;
+//   }
+//   append(value) {
+//     const node = new Node(value);
+//     if (this.isEmpty()) {
+//       this.head = node;
+//       this.tail = node;
+//     } else {
+//       this.tail.next = node;
+//       node.prev = this.tail;
+//       this.tail = node;
+//     }
+//     this.size++;
+//   }
+//   removeFromFront(value) {
+//     if (this.isEmpty()) {
+//       return null;
+//     } else {
+//       const value = this.head.value;
+//       this.head = this.head.next;
+//       this.size--;
+//       return value;
+//     }
+//   }
+//   removeFromEnd(value) {
+//     if (this.isEmpty()) {
+//       return null;
+//     }
+//     if (this.size == 1) {
+//       this.head = null;
+//       this.tail = null;
+//     } else {
+//       value = this.tail.value;
+//       this.tail = this.tail.prev;
+//       this.tail.next = null;
+//       this.size--
+//       return value
+//     }
 
-  }
-  print() {
-    if (this.isEmpty()) {
-      console.log("list is empty");
-    } else {
-      let curr = this.head;
-      let listValues = "";
-      while (curr) {
-        listValues += `${curr.value} `;
-        curr = curr.next;
-      }
-      console.log(listValues);
-    }
-  }
-}
-const list = new doublyLinkedList();
-console.log("list is empty", list.isEmpty());
-console.log("get size", list.getSize());
-list.print();
+//   }
+//   print() {
+//     if (this.isEmpty()) {
+//       console.log("list is empty");
+//     } else {
+//       let curr = this.head;
+//       let listValues = "";
+//       while (curr) {
+//         listValues += `${curr.value} `;
+//         curr = curr.next;
+//       }
+//       console.log(listValues);
+//     }
+//   }
+// }
+// const list = new doublyLinkedList();
+// console.log("list is empty", list.isEmpty());
+// console.log("get size", list.getSize());
+// list.print();
 
-list.prepend(10);
-list.append(20);
-list.removeFromEnd();
-list.print();
+// list.prepend(10);
+// list.append(20);
+// list.removeFromEnd();
+// list.print();
+
+//prepend , append , insert, remove, remove value, search, reverse
+
+//recursion
+
+// function recfib(n) {
+//   if (n < 2) {
+//     return n;
+//   }
+//   return recfib(n - 1) + recfib(n - 2);
+// }
+// console.log(recfib(5));
+
+// factorial
+// function factorial(n) {
+//   let result = 1;
+//   for (let i = 0; i <= n; i++) {
+//     result = result * i;
+//   }
+//   return result;
+// }
+// console.log(factorial(5));
+
+// function sum(n){
+//     if(n==1){
+//         return 1
+//     }
+//     return n + sum(n-1)
+// }
+
+// console.log(sum(6));
+
+// function fibonacci(n) {
+//   if (n < 2) {
+//     return n;
+//   }
+//   return fibonacci(n - 1) + fibonacci(n - 2);
+// }
+
+// console.log(fibonacci(6));
+
+
+

@@ -1,4 +1,4 @@
-//sum of integers from n to 1
+// sum of integers from n to 1
 function sumWithBaseCase(n) {
   if (n == 1) {
     return 1;
@@ -7,3 +7,5 @@ function sumWithBaseCase(n) {
   }
 }
 console.log(sumWithBaseCase(6));
+
+
