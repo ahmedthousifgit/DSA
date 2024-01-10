@@ -66,6 +66,19 @@ class doublyLinkedList {
     this.size--;
     return value;
   }
+  reverse(value) {
+    if (this.isEmpty()) {
+      return null;
+    }else{
+      let curr = this.tail
+      let listValues =''
+      while(curr){
+        listValues +=`${curr.value} `
+        curr = curr.prev
+      }
+      console.log(listValues);
+    }
+  }
   print() {
     if (this.isEmpty()) {
       console.log("list is empty");
