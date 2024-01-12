@@ -9,13 +9,13 @@ function binarySearch(arr, target) {
     if (arr[midIndex] == target) {
       return midIndex;
     }
-    if (target < arr[midIndex]) {
-      rightIndex = midIndex - 1;
-    } else {
+    if (arr[midIndex] < target) {
       leftIndex = midIndex + 1;
+    } else {
+      rightIndex = midIndex - 1;
     }
   }
   return -1;
 }
 
-console.log(binarySearch([1, 22, 3, 43, 5], 43));
+console.log(binarySearch([4,3,2,1,0], 4));

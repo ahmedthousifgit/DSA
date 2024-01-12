@@ -1,8 +1,8 @@
 class Node {
   constructor(value) {
     this.value = value;
-    this.prev = null;
     this.next = null;
+    this.prev = null;
   }
 }
 class doublyLinkedList {
@@ -41,43 +41,32 @@ class doublyLinkedList {
     }
     this.size++;
   }
-
-  removeFromFront(value) {
+  removeFront(value) {
     if (this.isEmpty()) {
       return null;
-    }
-    value = this.head.value;
-    this.head = this.head.next;
-    this.size--;
-    return value;
-  }
-  removeFromEnd(value) {
-    if (this.isEmpty()) {
-      return null;
-    }
-    value = this.tail.value;
-    if (this.size == 1) {
-      this.head = null;
-      this.tail = null;
     } else {
-      this.tail = this.tail.prev;
-      this.tail.next = null;
+      value = this.head.value;
+      this.head = this.head.next;
+      this.size--;
+      return value;
     }
-    this.size--;
-    return value;
   }
-  reverse(value) {
-    if (this.isEmpty()) {
-      return null;
-    }else{
-      let curr = this.tail
-      let listValues =''
-      while(curr){
-        listValues +=`${curr.value} `
-        curr = curr.prev
-      }
-      console.log(listValues);
+  removeEnd(value){
+    if(this.isEmpty()){
+        return null
     }
+    value = this.tail.value
+    if(this.size==1){
+        this.head=null
+        this.tail=null
+    }
+    else{
+      
+        this.tail = this.tail.prev
+        this.tail.next= null
+    }
+    this.size--
+    return value
   }
   print() {
     if (this.isEmpty()) {
@@ -94,9 +83,11 @@ class doublyLinkedList {
   }
 }
 const list = new doublyLinkedList();
-list.prepend(10);
-list.prepend(20);
-list.append(30);
-list.removeFromEnd();
+console.log("list is empty", list.isEmpty());
+console.log("get size", list.getSize());
+list.print();
 
+list.prepend(10);
+list.append(20);
+list.removeEnd();
 list.print();
