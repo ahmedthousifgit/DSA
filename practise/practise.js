@@ -743,5 +743,57 @@
 
 // console.log(fibonacci(6));
 
+// array chunk
+// var chunk = function (arr, size) {
+//   let smallArr = [];
+//   if (size < 1) {
+//     return smallArr;
+//   }
+//   if (size >= arr.length) {
+//     smallArr.push(arr.slice())
+//     return smallArr
 
+//   } else {
+//     while (size <= arr.length) {
+//       smallArr.push(arr.slice(0, size));
+//       arr = arr.slice(size);
+//     }
+//     return smallArr;
+//   }
+// };
+// console.log(chunk([1, 2, 3, 4, 5], 2));
 
+// second largest
+// function second(arr) {
+//   let small = Infinity;
+//   let sec = Infinity;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] < small) {
+//         sec = small
+//       small = arr[i];
+
+//     }
+//     else if (arr[i] > small && arr[i] < sec) {
+//       sec= arr[i];
+//     }
+//   }
+//   return sec;
+// }
+// console.log(second([1, 2, 3, 4, 5]));
+
+// pallindroms
+function pallindrome(arr) {
+  str = 0;
+  end = arr.length - 1;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[str] === arr[end]) {
+      str++;
+      end--;
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(pallindrome([1, 2, 3, 2, 1]));

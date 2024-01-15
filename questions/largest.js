@@ -10,21 +10,21 @@
 // console.log(largest([1, 2, 3, 5, 44]));
 
 // second max
-function secondlargest(arr) {
-  let max = -Infinity;
-  let secMax = -Infinity;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > max) {
-      secMax = max;
-      max = arr[i];
-    }
-    if (arr[i] < max && arr[i] > secMax) {
-      secMax = arr[i];
-    }
-  }
-  return secMax;
-}
-console.log(secondlargest([22, 3, 44, 5, 6]));
+// function secondlargest(arr) {
+//   let max = -Infinity;
+//   let secMax = -Infinity;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] > max) {
+//       secMax = max;
+//       max = arr[i];
+//     }
+//     if (arr[i] < max && arr[i] > secMax) {
+//       secMax = arr[i];
+//     }
+//   }
+//   return secMax;
+// }
+// console.log(secondlargest([22, 3, 44, 5, 6]));
 
 // second largest with sorting
 
@@ -33,3 +33,19 @@ console.log(secondlargest([22, 3, 44, 5, 6]));
 //   return arr[1];
 // }
 // console.log(second([1, 2, 3, 4, 5]));
+
+function pallindrome(arr) {
+  str = 0;
+  end = arr.length - 1;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[str] === arr[end]) {
+      str++;
+      end--;
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(pallindrome([1, 2, 3, 2, 1]));
