@@ -782,18 +782,155 @@
 // console.log(second([1, 2, 3, 4, 5]));
 
 // pallindroms
-function pallindrome(arr) {
-  str = 0;
-  end = arr.length - 1;
+// function pallindrome(arr) {
+//   str = 0;
+//   end = arr.length - 1;
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[str] === arr[end]) {
-      str++;
-      end--;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[str] === arr[end]) {
+//       str++;
+//       end--;
+//     } else {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+// console.log(pallindrome([1, 2, 3, 2, 1]));
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+class linkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+  isEmpty() {
+    return this.size === 0;
+  }
+  getSize() {
+    return this.size;
+  }
+  prepend(value) {
+    const node = new Node(value);
+    if (this.isEmpty()) {
+      this.head = node;
     } else {
-      return false;
+      node.next = this.head;
+      this.head = node;
+    }
+    this.size++;
+  }
+  append(value) {
+    const node = new Node(value);
+    if (this.isEmpty()) {
+      this.head = node;
+    } else {
+      let prev = this.head;
+      while (prev.next) {
+        prev = prev.next;
+      }
+      node.next = prev.next;
+      prev.next = node;
+    }
+    this.size++;
+  }
+  insert(value, index) {
+    const node = new Node(value);
+    if (index < 0 || index > this.size) {
+      return;
+    }
+    if (index === 0) {
+      this.prepend(value);
+    } else {
+      let prev = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        prev = prev.next;
+      }
+      node.next = prev.next;
+      prev.next = node;
+    }
+    this.size++;
+  }
+
+  remove(value) {
+    if (this.isEmpty()) {
+      return null;
+    }
+    if (this.head.value === value) {
+      this.head = this.head.next;
+      this.size--;
+      return value;
+    } else {
+      const node = new Node(value);
+      let prev = this.head;
+      while (prev.next && prev.next.value != value) {
+        prev = prev.next;
+      }
+      if (prev.next) {
+        let removedNode = prev.next;
+        prev.next = removedNode.next;
+      }
+      this.size--;
+      return value;
     }
   }
-  return true;
+  reverse() {
+    let prev = null;
+    let curr = this.head;
+    while (curr) {
+      let next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+    this.head = prev;
+  }
+  search(value) {
+    let i = 0;
+    let curr = this.head;
+    while (curr) {
+      if (curr.value == value) {
+        return i;
+      }
+      curr = curr.next;
+      i++;
+    }
+  }
+
+  print() {
+    if (this.isEmpty()) {
+      console.log("list is empty");
+    } else {
+      let curr = this.head;
+      let listValues = "";
+      while (curr) {
+        listValues += `${curr.value} `;
+        curr = curr.next;
+      }
+
+      console.log(listValues);
+    }
+  }
 }
-console.log(pallindrome([1, 2, 3, 2, 1]));
+
+const list = new linkedList();
+console.log("lsit is empty", list.isEmpty());
+console.log("get size", list.getSize());
+list.print();
+
+list.prepend(10);
+list.append(20);
+list.insert(25, 2);
+list.remove(22);
+list.print();
+
+console.log(list.search(20));
+// list.print();
+
+// list.reverse();
+// list.print();

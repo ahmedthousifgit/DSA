@@ -34,18 +34,5 @@
 // }
 // console.log(second([1, 2, 3, 4, 5]));
 
-function pallindrome(arr) {
-  str = 0;
-  end = arr.length - 1;
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[str] === arr[end]) {
-      str++;
-      end--;
-    } else {
-      return false;
-    }
-  }
-  return true;
-}
-console.log(pallindrome([1, 2, 3, 2, 1]));
+
