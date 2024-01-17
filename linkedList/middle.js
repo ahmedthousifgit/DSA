@@ -1,14 +1,14 @@
+// finding middle node in singly linkedlist
+
 class Node {
   constructor(value) {
     this.value = value;
-    this.prev = null;
     this.next = null;
   }
 }
-class doublyLinkedList {
+class linkedlist {
   constructor() {
     this.head = null;
-    this.tail = null;
     this.size = 0;
   }
   isEmpty() {
@@ -21,10 +21,8 @@ class doublyLinkedList {
     const node = new Node(value);
     if (this.isEmpty()) {
       this.head = node;
-      this.tail = node;
     } else {
       node.next = this.head;
-      this.head.prev = node;
       this.head = node;
     }
     this.size++;
@@ -33,38 +31,29 @@ class doublyLinkedList {
     const node = new Node(value);
     if (this.isEmpty()) {
       this.head = node;
-      this.tail = node;
     } else {
-      this.tail.next = node;
-      node.prev = this.tail;
-      this.tail = node;
+      let prev = this.head;
+      while (prev.next) {
+        prev = prev.next;
+      }
+      node.next = prev.next;
+      prev.next = node;
     }
     this.size++;
   }
-  removeFromFront(value) {
+  middle() {
     if (this.isEmpty()) {
       return null;
-    }
-    value = this.head.value;
-    this.head = this.head.next;
-    this.size--;
-    return value;
-  }
-
-  removeFromEnd(value){
-    if(this.isEmpty()){
-        return null
-    }
-    let removedNode
-    if(this.size===1){
-        this.head = null
-        this.tail=  null
-    }else{
-        this.tail.next = removedNode
-        
+    } else {
+      let slow = this.head;
+      let fast = this.head;
+      while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+      }
+      return slow;
     }
   }
-
   print() {
     if (this.isEmpty()) {
       console.log("list is empty");
@@ -80,11 +69,13 @@ class doublyLinkedList {
   }
 }
 
-const list = new doublyLinkedList();
-console.log("list is empty", list.isEmpty());
-console.log("get size", list.getSize());
+const list = new linkedlist();
+
+list.prepend(20);
+list.prepend(10);
+list.append(30);
+
 list.print();
 
-list.prepend(10);
-list.append(20);
-list.print();
+const middleNode = list.middle();
+console.log(middleNode ? middleNode.value : "Linked list is empty");
