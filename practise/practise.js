@@ -4,10 +4,11 @@ class Node {
     this.next = null;
   }
 }
-class linkedList {
+
+class LinkedList {
   constructor() {
     this.head = null;
-    this.size === 0;
+    this.size = 0;
   }
   isEmpty() {
     return this.size === 0;
@@ -15,50 +16,98 @@ class linkedList {
   getSize() {
     return this.size;
   }
-  prepend(value) {
+
+  append(value) {
     const node = new Node(value);
     if (this.isEmpty()) {
       this.head = node;
     } else {
-      node.next = this.head;
-      this.head = node;
+      let prev = this.head;
+      while (prev.next) {
+        prev = prev.next;
+      }
+      prev.next = node;
     }
     this.size++;
   }
-  search(value) {
-    let i = 0;
+
+  insertAfter(targetValue, newData) {
+    const node = new Node(newData);
     let curr = this.head;
-    let prev = this.head;
+
     while (curr) {
-      if (curr.value == value) {
-       
+      if (curr.value === targetValue) {
+        node.next = curr.next;
+        curr.next = node;
+        this.size++;
+        return;
       }
       curr = curr.next;
-      i++;
     }
+
+    console.log(`Node with value ${targetValue} not found.`);
   }
+
+  insertBefore(targetValue, newData) {
+    const node = new Node(newData);
+
+    if (this.head === null) {
+      console.log("List is empty.");
+      return;
+    }
+
+    if (this.head.value === targetValue) {
+      node.next = this.head;
+      this.head = node;
+      this.size++;
+      return;
+    }
+
+    let curr = this.head;
+    let prev = null;
+
+    while (curr) {
+      if (curr.value === targetValue) {
+        prev.next = node;
+        node.next = curr;
+        this.size++;
+        return;
+      }
+      prev = curr;
+      curr = curr.next;
+    }
+
+    console.log(`Node with value ${targetValue} not found.`);
+  }
+
+  // Other methods...
 
   print() {
     if (this.isEmpty()) {
-      console.log("list is empty");
-    } else {
-      let curr = this.head;
-      let listValues = "";
-      while (curr) {
-        listValues += `${curr.value} `;
-        curr = curr.next;
-      }
-      console.log(listValues);
+      console.log("lsit is empty");
     }
+    let curr = this.head;
+    let listValues = "";
+    while (curr) {
+      listValues += `${curr.value} `;
+      curr = curr.next;
+    }
+    console.log(listValues);
   }
 }
 
-const list = new linkedList();
+// Example usage:
 
-list.prepend(10);
-list.prepend(20);
-list.prepend(30);
+const list = new LinkedList();
 
-list.print();
+list.append(10);
+list.append(20);
+list.append(30);
 
-console.log(list.search(10));
+list.print(); // Output: 10 20 30
+
+list.insertAfter(20, 25);
+list.print(); // Output: 10 20 25 30
+
+list.insertBefore(25, 22);
+list.print(); // Output: 10 20 22 25 30

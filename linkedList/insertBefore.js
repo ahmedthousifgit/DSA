@@ -1,0 +1,108 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+class linkedList {
+  constructor() {
+    this.head = null;
+    this.size === 0;
+  }
+  isEmpty() {
+    return (this.size = 0);
+  }
+  getSize() {
+    return this.size;
+  }
+  prepend(value) {
+    const node = new Node(value);
+    if (this.isEmpty()) {
+      this.head = node;
+    } else {
+      node.next = this.head;
+      this.head = node;
+      this.size++;
+    }
+  }
+  append(value) {
+    const node = new Node(value);
+    if (this.isEmpty()) {
+      this.head = node;
+    }
+    let prev = this.head;
+    while (prev.next) {
+      prev = prev.next;
+    }
+    node.next = prev.next;
+    prev.next = node;
+    this.size++;
+  }
+
+  insertAfter(targetValue, data) {
+    const node = new Node(data);
+    if (this.isEmpty()) {
+      return null;
+    }
+    let curr = this.head;
+    while (curr) {
+      if (targetValue === curr.value) {
+        node.next = curr.next;
+        curr.next = node;
+        this.size++;
+        return;
+      }
+      curr = curr.next;
+    }
+  }
+
+  insertBefore(targetValue, data) {
+    const node = new Node(data);
+    if (this.isEmpty()) {
+      return null;
+    }
+    if (this.head.value === targetValue) {
+      node.next = this.head;
+      this.head = node;
+      this.size++;
+      return;
+    } else {
+      let curr = this.head;
+      let prev = null;
+      while (curr) {
+        if (curr.value === targetValue) {
+          prev.next = node;
+          node.next = curr;
+          this.size++;
+          return;
+        }
+        prev = curr;
+        curr = curr.next;
+      }
+    }
+  }
+
+  print() {
+    if (this.isEmpty()) {
+      console.log("list is empty");
+    }
+    let curr = this.head;
+    let listValues = "";
+    while (curr) {
+      listValues += `${curr.value} `;
+      curr = curr.next;
+    }
+    console.log(listValues);
+  }
+}
+
+const list = new linkedList();
+list.prepend(10);
+list.append(20);
+list.append(30);
+
+list.print();
+
+list.insertBefore(20, 15);
+list.insertAfter(15, 17);
+list.print();
