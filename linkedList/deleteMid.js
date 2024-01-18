@@ -41,13 +41,13 @@ class linkedlist {
     this.size++;
   }
   middle() {
-    if (this.isEmpty()  || this.head.next === null) {
+    let slow = null;
+    if (this.isEmpty()) {
       return null;
     } else {
+      slow = this.head;
+      let fast = this.head;
       let prev = null;
-      let slow = this.head;
-      let fast = this.head.next;
-
       while (fast && fast.next) {
         prev = slow;
         slow = slow.next;
@@ -58,9 +58,9 @@ class linkedlist {
       } else {
         prev.next = slow.next;
       }
-      this.size--;
-      return slow.value;
     }
+    this.size--;
+    return slow.value;
   }
   print() {
     if (this.isEmpty()) {
@@ -86,4 +86,4 @@ list.append(30);
 list.print();
 
 console.log(list.middle());
-list.print();
+// list.print();

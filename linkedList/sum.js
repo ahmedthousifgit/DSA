@@ -25,19 +25,18 @@ class linkedList {
     }
     this.size++;
   }
-  search(value) {
-    let i = 0;
-    let curr = this.head;
-    let prev = this.head;
-    while (curr) {
-      if (curr.value == value) {
-       
-      }
-      curr = curr.next;
-      i++;
+  sum() {
+    if (this.isEmpty()) {
+      return null;
     }
+    let curr = this.head;
+    let sum = 0;
+    while (curr) {
+      sum += curr.value;
+      curr = curr.next;
+    }
+    return sum;
   }
-
   print() {
     if (this.isEmpty()) {
       console.log("list is empty");
@@ -60,5 +59,4 @@ list.prepend(20);
 list.prepend(30);
 
 list.print();
-
-console.log(list.search(10));
+console.log(list.sum());
