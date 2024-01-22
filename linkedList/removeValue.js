@@ -115,14 +115,14 @@ list.print();
 list.insert(40, 1);
 list.print();
 
-list.insert(54,3)
-list.print()
+list.insert(54, 3);
+list.print();
 console.log(list.getSize());
 
 console.log(list.removeValue(40));
-list.print()
+list.print();
 console.log(list.removeValue(70));
-list.print()
+list.print();
 
 console.log(list.removeFrom(2));
-list.print()
+list.print();
