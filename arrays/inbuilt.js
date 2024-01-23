@@ -48,3 +48,31 @@ function totalSum(...numbers) {
   return numbers;
 }
 console.log(totalSum(num2, num, "hello"));
+
+// concat
+const concated = num.concat(num2);
+console.log(concated);
+
+// slice
+const slicedNum = num.slice(0, 3);
+console.log(slicedNum);
+
+// splice
+console.log("-----splice---");
+
+const fruits = ["apple", "banana", "cherry"];
+fruits.splice(1, 2, "orange");
+console.log(fruits);
+
+// fill
+
+const dumm = [1, 2, 3, 4, 4, 5];
+dumm.fill(0, 3);
+console.log(dumm);
+
+// flat
+const irritatedArr = [1, 2, [12, 3], [[3, 4, 5]], 7, 9];
+const flattenedArr = irritatedArr.flat(2);
+console.log(flattenedArr);
+
+

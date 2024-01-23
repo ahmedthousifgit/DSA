@@ -75,7 +75,7 @@ class linkedList {
     } else {
       let prev = this.head;
       while (prev.next && prev.next.value !== value) {
-        prev = prev.next;
+        prev = prev.next; 
       }
       if (prev.next) {
         let removedNode = prev.next;

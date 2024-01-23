@@ -5,4 +5,4 @@ function reverse(str) {
     return reverse(str.substr(1)) + str.charAt(0);
   }
 }
-console.log(reverse("palindrome"));
+console.log(reverse("hello"));
