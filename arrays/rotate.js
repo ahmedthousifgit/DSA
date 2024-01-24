@@ -10,4 +10,4 @@ function rotate(arr, k) {
   arr.unshift(...rotatedArr);
   return arr;
 }
-console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3));
+console.log(rotate([1, 2, 3, 4, 5],6 ));
