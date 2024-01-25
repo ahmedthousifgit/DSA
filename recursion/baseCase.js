@@ -6,6 +6,6 @@ function sumWithBaseCase(n) {
     return n + sumWithBaseCase(n - 1);
   }
 }
-console.log(sumWithBaseCase(6));
+console.log(sumWithBaseCase(4));
 
 

@@ -96,12 +96,12 @@ class linkedList {
   }
 }
 
-const list = new linkedList();
-list.prepend(10);
-list.append(20);
-list.append(30);
+  const list = new linkedList();
+  list.prepend(10);
+  list.append(20);
+  list.append(30);
 
-list.print();
+  list.print();
 
 list.insertBefore(20, 15);
 list.insertAfter(15, 17);

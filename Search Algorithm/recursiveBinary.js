@@ -1,6 +1,6 @@
 // recursive binary search
 function recursiveBinarySearch(arr, target) {
-  arr.sort((a, b) => a - b);
+  arr.sort((a, b) => a - b);  
   return search(arr, target, 0, arr.length - 1);
 }
 function search(arr, target, leftIndex, rightIndex) {
