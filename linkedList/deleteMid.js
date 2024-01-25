@@ -86,4 +86,4 @@ list.append(30);
 list.print();
 
 console.log(list.middle());
-// list.print();
+list.print();
