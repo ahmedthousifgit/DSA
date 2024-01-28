@@ -50,3 +50,34 @@
 // }
 // const arr = [5, 4, 3, 2, 1];
 // console.log(quic(arr));
+
+// nums = [51, 71, 17, 24, 42]
+// function sumOfDigit(nums){
+//     return nums.toString().split('').map(Number).reduce((sum,digit)=> sum+digit, 0)
+
+// }
+// const sumArray = nums.map(sumOfDigit)
+// console.log(sumArray);
+
+// merge sort
+function mergeSort(arr) {
+  if (arr.length < 2) {
+    return arr;
+  }
+  let mid = Math.floor(arr.length / 2);
+  let leftArr = arr.slice(0, mid);
+  let rightArr = arr.slice(mid);
+  return merge(mergeSort(leftArr), mergeSort(rightArr));
+}
+function merge(leftArr, rightArr) {
+  let sortedArr = [];
+  while (leftArr.length && rightArr.length) {
+    if (leftArr[0] <= rightArr[0]) {
+      sortedArr.push(leftArr.shift());
+    } else {
+      sortedArr.push(rightArr.shift());
+    }
+  }
+  return [...sortedArr, ...rightArr, ...leftArr];
+}
+console.log(mergeSort([2, 3, -2, -1, 5]));
