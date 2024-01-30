@@ -94,67 +94,141 @@
 // console.log(selection([-2, -3, 45, 2, 3]));
 
 // hashtable
-class hashtable {
-  constructor(size) {
-    this.table = new Array(size);
-    this.size = size;
-  }
-  hash(key) {
-    let total = 0;
-    for (let i = 0; i < key.length; i++) {
-      total += key.charCodeAt(i);
+// class hashtable {
+//   constructor(size) {
+//     this.table = new Array(size);
+//     this.size = size;
+//   }
+//   hash(key) {
+//     let total = 0;
+//     for (let i = 0; i < key.length; i++) {
+//       total += key.charCodeAt(i);
+//     }
+//     return total % this.size;
+//   }
+//   set(key, value) {
+//     const index = this.hash(key);
+//     const bucket = this.table[index];
+//     if (!bucket) {
+//       this.table[index] = [[key, value]];
+//     } else {
+//       const sameKeyItem = bucket.find((item) => item[0] === key);
+//       if (sameKeyItem) {
+//         sameKeyItem[1] === value;
+//       } else {
+//         bucket.push([key, value]);
+//       }
+//     }
+//   }
+//   get(key) {
+//     const index = this.hash(key);
+//     const bucket = this.table[index];
+//     if (bucket) {
+//       const sameKeyItem = bucket.find((item) => item[0] === key);
+//       if (sameKeyItem) {
+//         return sameKeyItem[1];
+//       }
+//     }
+//     return undefined;
+//   }
+
+//   remove(key) {
+//     const index = this.hash(key);
+//     const bucket = this.table[index];
+//     if (bucket) {
+//       const sameKeyItem = bucket.find((item) => item[0] === key);
+//       if (sameKeyItem) {
+//         bucket.splice(bucket.indexOf(sameKeyItem), 1);
+//       }
+//     }
+//   }
+//   display() {
+//     for (let i = 0; i < this.table.length; i++) {
+//       if (this.table[i]) {
+//         console.log(i, this.table[i]);
+//       }
+//     }
+//   }
+// }
+
+// const table = new hashtable(20);
+// table.set("name", "ahmed");
+// table.set("age", 23);
+// table.get("name");
+// // table.remove("age");
+// table.set("gae", 25);
+// table.display();
+
+
+// que in linkedlist
+class Node {
+    constructor(value) {
+      this.value = value;
+      this.next = null;
     }
-    return total % this.size;
   }
-  set(key, value) {
-    const index = this.hash(key);
-    const bucket = this.table[index];
-    if (!bucket) {
-      this.table[index] = [[key, value]];
-    } else {
-      const sameKeyItem = bucket.find((item) => item[0] === key);
-      if (sameKeyItem) {
-        sameKeyItem[1] === value;
+  
+  class QueueLinkedList {
+    constructor() {
+      this.front = null;
+      this.end = null;
+      this.size = 0;
+    }
+  
+    // Enqueue: Add value to the end of the queue
+    enqueue(value) {
+      let node = new Node(value);
+      if (this.isEmpty()) {
+        this.front = node;
+        this.end = node;
       } else {
-        bucket.push([key, value]);
+        this.end.next = node;
+        this.end = node;
       }
+      this.size++;
+    }
+  
+    // Dequeue: Remove and return value from the front of the queue
+    dequeue() {
+      if (this.isEmpty()) {
+        return null; // Underflow
+      }
+      let removed = this.front;
+      this.front = this.front.next;
+      if (!this.front) {
+        this.end = null; // If the queue becomes empty after dequeue
+      }
+      this.size--;
+      return removed.value;
+    }
+  
+    // Peek: Return the front value without removing it
+    peek() {
+      return this.isEmpty() ? null : this.front.value;
+    }
+  
+    // Check if the queue is empty
+    isEmpty() {
+      return this.size === 0;
+    }
+  
+    // Get the size of the queue
+    size() {
+      return this.size;
     }
   }
-  get(key) {
-    const index = this.hash(key);
-    const bucket = this.table[index];
-    if (bucket) {
-      const sameKeyItem = bucket.find((item) => item[0] === key);
-      if (sameKeyItem) {
-        return sameKeyItem[1];
-      }
-    }
-    return undefined;
-  }
-
-  remove(key) {
-    const index = this.hash(key);
-    const bucket = this.table[index];
-    if (bucket) {
-      const sameKeyItem = bucket.find((item) => item[0] === key);
-      if (sameKeyItem) {
-        bucket.splice(bucket.indexOf(sameKeyItem), 1);
-      }
-    }
-  }
-  display() {
-    for (let i = 0; i < this.table.length; i++) {
-      if (this.table[i]) {
-        console.log(i, this.table[i]);
-      }
-    }
-  }
-}
-
-const table = new hashtable(20);
-table.set("name", "ahmed");
-table.set("age", 23);
-table.get("name");
-// table.remove("age");
-table.set("gae", 25);
-table.display();
+  
+  // Example Usage:
+  let queueLinkedList = new QueueLinkedList();
+  queueLinkedList.enqueue(10);
+  queueLinkedList.enqueue(20);
+  queueLinkedList.enqueue(30);
+  
+  console.log("Front value is:", queueLinkedList.peek()); // Output: 10
+  console.log("Queue size is:", queueLinkedList.size()); // Output: 3
+  
+  console.log(queueLinkedList.dequeue()); // Output: 10
+  console.log(queueLinkedList.dequeue()); // Output: 20
+  console.log(queueLinkedList.dequeue()); // Output: 30
+  console.log(queueLinkedList.dequeue()); // Output: null (Underflow)
+  
