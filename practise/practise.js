@@ -464,13 +464,13 @@
 
 // circular 
 
-function split(words,separator){
-    for(let i=0;i<words.length;i++){
-        if(words[i].includes(separator)){
-            words = words[i].split(separator)
-        }
-    }
-    return words
-}
+// function split(words,separator){
+//     for(let i=0;i<words.length;i++){
+//         if(words[i].includes(separator)){
+//             words = words[i].split(separator)
+//         }
+//     }
+//     return words
+// }
 
-console.log(split(["one.two.three","four.five","six"],'.'));
+// console.log(split(["one.two.three","four.five","six"],'.'));
