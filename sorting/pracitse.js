@@ -1,99 +1,4 @@
-// bubble sort
-// O(n2)
-// function bubble(arr) {
-//   let swap;
-//   do {
-//     swap = false;
-//     for (let i = 0; i < arr.length - 1; i++) {
-//       if (arr[i] > arr[i + 1]) {
-//         [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-//         swap = true;
-//       }
-//     }
-//   } while (swap);
-//   return arr;
-// }
-// console.log(bubble([-2, -3, 45, 2, 3]));
-
-// insertion sort
-// O(n2)
-// function insertion(arr) {
-//   for (let i = 1; i < arr.length; i++) {
-//     let NTI = arr[i];
-//     let j = i - 1;
-//     while (j >= 0 && arr[j] > NTI) {
-//       arr[j + 1] = arr[j];
-//       j = j - 1;
-//     }
-//     arr[j + 1] = NTI;
-//   }
-//   return arr;
-// }
-// console.log(insertion([-2, -3, 45, 2, 3]));
-
-// quick
-// O(nlogn)
-// function quick(arr) {
-//   if (arr.length < 2) {
-//     return arr;
-//   }
-//   let pivot = arr[arr.length - 1];
-//   let left = [];
-//   let right = [];
-//   for (let i = 0; i < arr.length - 1; i++) {
-//     if (arr[i] < pivot) {
-//       left.push(arr[i]);
-//     } else {
-//       right.push(arr[i]);
-//     }
-//   }
-//   return [...quick(left), pivot, ...quick(right)];
-// }
-// console.log(quick([-2, -3, 45, 2, 3]));
-
-// merge Sort
-// O(nlogn)
-// function mergeSort(arr) {
-//   if (arr.length < 2) {
-//     return arr;
-//   }
-//   let minIndex = Math.floor(arr.length / 2);
-//   let leftArr = arr.slice(0, minIndex);
-//   let rightArr = arr.slice(minIndex);
-//   return merge(mergeSort(leftArr), mergeSort(rightArr));
-// }
-
-// function merge(leftArr, rightArr) {
-//   let sortedArr = [];
-//   while (leftArr.length && rightArr.length) {
-//     if (leftArr[0] < rightArr[0]) {
-//       sortedArr.push(leftArr.shift());
-//     } else {
-//       sortedArr.push(rightArr.shift());
-//     }
-//   }
-//   return [...sortedArr, ...leftArr, ...rightArr];
-// }
-// console.log(mergeSort([-2, -3, 45, 2, 3]));
-
-// selection
-// function selection(arr) {
-//   for (let i = 0; i < arr.length - 1; i++) {
-//     let minIndex = i;
-//     for (let j = i + 1; j < arr.length - 1; j++) {
-//       if (arr[j] < arr[minIndex]) {
-//         minIndex = j;
-//       }
-//     }
-//     if (minIndex !== i) {
-//       [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
-//     }
-//   }
-//   return arr;
-// }
-// console.log(selection([-2, -3, 45, 2, 3]));
-
-// hashtable
+// hashtable collision
 // class hashtable {
 //   constructor(size) {
 //     this.table = new Array(size);
@@ -106,25 +11,29 @@
 //     }
 //     return total % this.size;
 //   }
+
 //   set(key, value) {
 //     const index = this.hash(key);
-//     const bucket = this.table[index];
+//     // this.table[index] = value;
+//     let bucket = this.table[index];
 //     if (!bucket) {
 //       this.table[index] = [[key, value]];
 //     } else {
-//       const sameKeyItem = bucket.find((item) => item[0] === key);
+//       let sameKeyItem = bucket.find((item) => item[0] === key);
 //       if (sameKeyItem) {
-//         sameKeyItem[1] === value;
+//         sameKeyItem[1] == value;
 //       } else {
 //         bucket.push([key, value]);
 //       }
 //     }
 //   }
+
 //   get(key) {
 //     const index = this.hash(key);
-//     const bucket = this.table[index];
+//     // return this.table[index];
+//     let bucket = this.table[index];
 //     if (bucket) {
-//       const sameKeyItem = bucket.find((item) => item[0] === key);
+//       let sameKeyItem = bucket.find((item) => item[0] == key);
 //       if (sameKeyItem) {
 //         return sameKeyItem[1];
 //       }
@@ -134,9 +43,10 @@
 
 //   remove(key) {
 //     const index = this.hash(key);
+//     // this.table[index] = undefined;
 //     const bucket = this.table[index];
 //     if (bucket) {
-//       const sameKeyItem = bucket.find((item) => item[0] === key);
+//       let sameKeyItem = bucket.find((item) => item[0] === key);
 //       if (sameKeyItem) {
 //         bucket.splice(bucket.indexOf(sameKeyItem), 1);
 //       }
@@ -151,84 +61,312 @@
 //   }
 // }
 
-// const table = new hashtable(20);
+// const table = new hashtable(10);
 // table.set("name", "ahmed");
-// table.set("age", 23);
-// table.get("name");
+// table.set("mane", "thousif");
+// table.set("age", 30);
+// console.log(table.get("mane"));
 // // table.remove("age");
-// table.set("gae", 25);
+// // console.log(table.get("age"));
 // table.display();
 
+// string count using hash
+// let s = "geeksforgeeks";
 
-// que in linkedlist
-class Node {
-    constructor(value) {
-      this.value = value;
-      this.next = null;
-    }
-  }
-  
-  class QueueLinkedList {
+// let arr = Array(26).fill(0);
+// for (let i = 0; i < s.length; i++) {
+//   arr[s.charCodeAt(i) - "a".charCodeAt(0)]++;
+// }
+// let char = "g";
+// let count = arr[char.charCodeAt(0) - "a".charCodeAt(0)];
+// console.log(count);
+
+// que ll
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
+// class Stack {
+//   constructor() {
+//     this.front = null;
+//     this.size = 0;
+//   }
+//   isEmpty() {
+//     return this.size === 0;
+//   }
+//   getSize() {
+//     return this.size;
+//   }
+//   push(value) {
+//     const node = new Node(value);
+
+//     node.next = this.front;
+//     this.front = node;
+//     this.size++;
+//   }
+
+//   pop() {
+//     let popped = this.front;
+//     this.front = this.front.next;
+//     this.size--;
+//     return popped.value;
+//   }
+
+//   peek() {
+//     if (this.isEmpty()) {
+//       return null;
+//     } else {
+//       return this.front.value;
+//     }
+//   }
+//   print() {
+//     if (this.isEmpty()) {
+//       console.log("list is empty");
+//     } else {
+//       let curr = this.front;
+//       let listValues = "";
+//       while (curr) {
+//         listValues += `${curr.value} `;
+//         curr = curr.next;
+//       }
+//       console.log(listValues);
+//     }
+//   }
+// }
+
+// const que = new Stack();
+// que.push(10);
+// que.push(20);
+// que.push(30);
+// que.pop();
+// console.log(que.peek());
+// que.print();
+
+// que array
+// class Stack {
+//   constructor() {
+//     this.item = [];
+//   }
+//   isEmpty() {
+//     return this.item.length === 0;
+//   }
+//   getSize() {
+//     return this.item.length;
+//   }
+
+//   push(value) {
+//     this.item.push(value);
+//   }
+
+//   pop() {
+//     this.item.pop();
+//   }
+
+//   peek() {
+//     return this.item[this.item.length - 1];
+//   }
+
+//   print() {
+//     if (this.isEmpty()) {
+//       return null;
+//     } else {
+//       console.log(this.item);
+//     }
+//   }
+// }
+
+// const que = new Stack();
+// que.push(10);
+// que.push(20);
+// que.push(30);
+// que.pop();
+// console.log(que.peek());
+// que.print();
+
+// que linkedlist
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
+
+// class Que {
+//   constructor() {
+//     this.front = null;
+//     this.end = null;
+//     this.size = 0;
+//   }
+//   isEmpty() {
+//     return this.size === 0;
+//   }
+//   getSize() {
+//     return this.size;
+//   }
+
+//   enque(value) {
+//     const node = new Node(value);
+//     if (this.isEmpty()) {
+//       this.front = node;
+//       this.end = node;
+//     } else {
+//       this.end.next = node;
+//       this.end = node;
+//     }
+//     this.size++;
+//   }
+
+//   deque() {
+//     if (this.isEmpty()) {
+//       return null;
+//     } else {
+//       let removed = this.front;
+//       this.front = this.front.next;
+//       this.size--;
+//       return removed.value;
+//     }
+//   }
+
+//   peek() {
+//     return this.isEmpty() ? null : this.front.value;
+//   }
+
+//   print() {
+//     if (this.isEmpty()) {
+//       console.log("list is empty");
+//     } else {
+//       let curr = this.front;
+//       let listValues = "";
+
+//       while (curr) {
+//         listValues += `${curr.value} `;
+//         curr = curr.next;
+//       }
+//       console.log(listValues);
+//     }
+//   }
+// }
+
+// const que = new Que();
+// que.enque(10);
+// que.enque(20);
+// que.enque(30);
+// // que.deque();
+// console.log(que.peek());
+// que.print();
+
+// que in que
+// class stackQue {
+//   constructor() {
+//     this.que1 = [];
+//     this.que2 = [];
+//   }
+//   push(element) {
+//     while (this.que1.length > 0) {
+//       this.que2.push(this.que1.shift());
+//     }
+//     this.que1.push(element);
+
+//     while (this.que2.length > 0) {
+//       this.que1.push(this.que2.shift());
+//     }
+//   }
+
+//   pop() {
+//     if (this.isEmpty()) {
+//       return null;
+//     } else {
+//       return this.que1.shift();
+//     }
+//   }
+
+//   peek() {
+//     return this.isEmpty() ? null : this.que1[0];
+//   }
+
+//   isEmpty() {
+//     return this.que1.length === 0;
+//   }
+
+//   // Get the size of the que
+//   size() {
+//     return this.que1.length;
+//   }
+// }
+
+// const que = new stackQue();
+// que.push(10);
+// que.push(20);
+// que.push(30);
+
+// console.log(que.pop()); // Output: 30
+// console.log(que.pop()); // Output: 20
+// console.log(que.pop()); // Output: 10
+// console.log(que.pop());
+
+
+class QueueUsingStack {
     constructor() {
-      this.front = null;
-      this.end = null;
-      this.size = 0;
+      this.stack1 = []; // For push operation
+      this.stack2 = []; // For pop operation
     }
   
-    // Enqueue: Add value to the end of the queue
-    enqueue(value) {
-      let node = new Node(value);
-      if (this.isEmpty()) {
-        this.front = node;
-        this.end = node;
-      } else {
-        this.end.next = node;
-        this.end = node;
+    // push operation
+    push(element) {
+      // Move all elements from stack2 to stack1
+      while (this.stack2.length > 0) {
+        this.stack1.push(this.stack2.pop());
       }
-      this.size++;
+  
+      // Push the new element onto stack1
+      this.stack1.push(element);
     }
   
-    // Dequeue: Remove and return value from the front of the queue
-    dequeue() {
-      if (this.isEmpty()) {
-        return null; // Underflow
+    // pop operation
+    pop() {
+      // Move all elements from stack1 to stack2
+      while (this.stack1.length > 0) {
+        this.stack2.push(this.stack1.pop());
       }
-      let removed = this.front;
-      this.front = this.front.next;
-      if (!this.front) {
-        this.end = null; // If the queue becomes empty after dequeue
-      }
-      this.size--;
-      return removed.value;
+  
+      // Pop the front element from stack2 (simulating pop)
+      return this.stack2.pop();
     }
   
-    // Peek: Return the front value without removing it
+    // Peek at the front element without removing it
     peek() {
-      return this.isEmpty() ? null : this.front.value;
+      if (this.isEmpty()) {
+        return null;
+      }
+  
+      // If stack2 is not empty, peek from stack2; otherwise, peek from stack1
+      return this.stack2.length > 0 ? this.stack2[this.stack2.length - 1] : this.stack1[0];
     }
   
     // Check if the queue is empty
     isEmpty() {
-      return this.size === 0;
+      return this.stack1.length === 0 && this.stack2.length === 0;
     }
   
     // Get the size of the queue
     size() {
-      return this.size;
+      return this.stack1.length + this.stack2.length;
     }
   }
   
-  // Example Usage:
-  let queueLinkedList = new QueueLinkedList();
-  queueLinkedList.enqueue(10);
-  queueLinkedList.enqueue(20);
-  queueLinkedList.enqueue(30);
+  // Example usage:
+  const queue = new QueueUsingStack();
+  queue.push(10);
+  queue.push(20);
+  queue.push(30);
   
-  console.log("Front value is:", queueLinkedList.peek()); // Output: 10
-  console.log("Queue size is:", queueLinkedList.size()); // Output: 3
+  console.log("Front element is:", queue.peek())    ; // Output: 10
+  console.log("Queue size is:", queue.size()); // Output: 3
   
-  console.log(queueLinkedList.dequeue()); // Output: 10
-  console.log(queueLinkedList.dequeue()); // Output: 20
-  console.log(queueLinkedList.dequeue()); // Output: 30
-  console.log(queueLinkedList.dequeue()); // Output: null (Underflow)
+  console.log(queue.pop()); // Output: 10
+  console.log(queue.pop()); // Output: 20
+  console.log(queue.pop()); // Output: 30
+  console.log(queue.pop()); // Output: null (Underflow)
   
