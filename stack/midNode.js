@@ -1,23 +1,15 @@
-//  stack in linkedlist
-
 class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
   }
 }
-
 class Stack {
   constructor() {
     this.head = null;
     this.size = 0;
   }
-  isEmpty() {
-    return this.size === 0;
-  }
-  getSize() {
-    return this.size;
-  }
+
   push(value) {
     const node = new Node(value);
     node.next = this.head;
@@ -40,8 +32,35 @@ class Stack {
     if (this.isEmpty()) {
       return null;
     } else {
-      return this.head.value;
+      return this.isEmpty() ? null : this.head.value;
     }
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+  getSize() {
+    return this.size;
+  }
+  middle() {
+    let slow = this.head;
+    let fast = this.head;
+    while (fast && fast.next) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    return slow.value;
+  }
+
+  secondLast() {
+    if (this.size < 2) {
+      return false;
+    }
+    let curr = this.head;
+    while (curr.next.next) {
+      curr = curr.next;
+    }
+    return curr.value;
   }
   print() {
     if (this.isEmpty()) {
@@ -59,10 +78,13 @@ class Stack {
 }
 
 const stack = new Stack();
-
 stack.push(10);
 stack.push(20);
 stack.push(30);
-console.log(stack.peek());
-stack.print();
+stack.push(40);
 
+// console.log(stack.middle());
+console.log(stack.pop());
+// console.log(stack.secondLast());
+// console.log(stack.peek());
+stack.print();
