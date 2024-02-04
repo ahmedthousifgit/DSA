@@ -27,7 +27,7 @@ function isValid(s) {
   return stack.length === 0;
 }
 
-const s = "[)";
+const s = "[{()}]";
 if (isValid(s)) {
   console.log(true);
 } else {

@@ -474,4 +474,91 @@
 // stack.reverse();
 // stack.print();
 
+// stack in que
+// class Stack {
+//   constructor() {
+//     this.que1 = [];
+//     this.que2 = [];
+//   }
+//   isEmpty() {
+//     return this.que1.length === 0;
+//   }
+//   getSize() {
+//     return this.que1.length;
+//   }
+//   push(element) {
+//     while (this.que1.length > 0) {
+//       this.que2.push(this.que1.shift());
+//     }
+//     this.que1.push(element);
+//     while (this.que2.length > 0) {
+//       this.que1.push(this.que2.shift());
+//     }
+//   }
 
+//   pop() {
+//     if (this.isEmpty()) {
+//       return null;
+//     } else {
+//       return this.que1.shift();
+//     }
+//   }
+
+//   peek() {
+//     return this.isEmpty() ? null : this.que1[0];
+//   }
+
+//   print() {
+//     console.log(this.que1);
+//   }
+// }
+
+// const stack = new Stack();
+// stack.push(10);
+// stack.push(20);
+// stack.push(30);
+// stack.pop();
+// console.log(stack.peek());
+// stack.print();
+
+// que in stsck
+// class queInStack {
+//   constructor() {
+//     this.stack1 = [];
+//     this.stack2 = [];
+//   }
+
+//   isEmpty() {
+//     return this.stack1.length === 0 && this.stack2.length === 0;
+//   }
+//   getSize() {
+//     return this.stack1.length + this.stack2.length;
+//   }
+
+//   push(element) {
+//     while (this.stack2.length > 0) {
+//       this.stack1.push(this.stack2.pop());
+//     }
+//     this.stack1.push(element);
+//   }
+
+//   pop() {
+//     while (this.stack1.length > 0) {
+//       this.stack2.push(this.stack1.pop());
+//     }
+//     return this.stack2.pop();
+//   }
+//   peek() {
+//     return this.stack2.length > 0
+//       ? this.stack2[this.stack2.length - 1]
+//       : this.stack1[0];
+//   }
+// }
+
+// const que = new queInStack();
+// que.push(10);
+// que.push(20);
+// que.push(30);
+
+// console.log(que.pop());
+// console.log(que.peek());
