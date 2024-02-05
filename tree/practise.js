@@ -72,6 +72,21 @@ class binarySearchTree {
       console.log(root.value);
     }
   }
+
+  levelOrder() {
+    let que = [];
+    que.push(this.root);
+    while (que.length) {
+      let curr = que.shift();
+      console.log(curr.value);
+      if (curr.left) {
+        que.push(curr.left);
+      }
+      if (curr.right) {
+        que.push(curr.right);
+      }
+    }
+  }
 }
 
 const tree = new binarySearchTree();
@@ -82,4 +97,5 @@ tree.insert(3);
 tree.insert(7);
 
 console.log(tree.search(tree.root, 34));
-tree.inOrder(tree.root);
+// tree.inOrder(tree.root);
+tree.levelOrder();
