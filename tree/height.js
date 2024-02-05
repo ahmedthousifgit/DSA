@@ -65,6 +65,15 @@ class binarySearchTree {
     }
   }
 
+  height(node) {
+    if (!node) {
+      return 0;
+    } else {
+      const leftHeight = this.height(node.left);
+      const rightHeight = this.height(node.right);
+      return Math.max(leftHeight, rightHeight) + 1;
+    }
+  }
 }
 
 const bst = new binarySearchTree();
@@ -75,5 +84,4 @@ bst.insert(5);
 bst.insert(15);
 bst.insert(3);
 bst.insert(7);
-console.log(bst.search(bst.root, 12));
-bst.levelOrder();
+console.log("height:", bst.height(bst.root));

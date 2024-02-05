@@ -9,6 +9,7 @@ class binarySearchTree {
   constructor() {
     this.root = null;
   }
+
   isEmpty() {
     return this.root === null;
   }
@@ -35,7 +36,6 @@ class binarySearchTree {
       }
     }
   }
-
   search(root, value) {
     if (!root) {
       return false;
@@ -48,6 +48,34 @@ class binarySearchTree {
         return this.search(root.right, value);
       }
     }
+  }
+  min(root) {
+    if (!root.left) {
+      return root.value;
+    } else {
+      return this.min(root.left);
+    }
+  }
+
+  max(root) {
+    if (!root.right) {
+      return root.value;
+    } else {
+      return this.max(root.right);
+    }
+  }
+
+  bstvalidation() {
+    return this.isValid(this.root, -Infinity, Infinity);
+  }
+  isValid(node,min, max){
+    if(!node){
+        return true
+    }
+    if(node.value <min || node.value>max){
+        return false
+    }
+    return (this.isValid(node.left,min,node.value) && this.isValid(node.right,node.value,max))
   }
 
   levelOrder() {
@@ -64,16 +92,13 @@ class binarySearchTree {
       }
     }
   }
-
 }
 
-const bst = new binarySearchTree();
-console.log("Tree is empty?", bst.isEmpty());
-
-bst.insert(10);
-bst.insert(5);
-bst.insert(15);
-bst.insert(3);
-bst.insert(7);
-console.log(bst.search(bst.root, 12));
-bst.levelOrder();
+const tree = new binarySearchTree();
+tree.insert(10);
+tree.insert(5);
+tree.insert(15);
+tree.insert(1);
+tree.insert(4);
+console.log(tree.bstvalidation());
+tree.levelOrder();
