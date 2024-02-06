@@ -96,6 +96,7 @@ class binarySearchTree {
       }
     }
   }
+  
 }
 const tree = new binarySearchTree();
 
@@ -105,8 +106,8 @@ tree.insert(15);
 tree.insert(3);
 tree.insert(4);
 
-console.log(tree.search(tree.root, 30));
+// console.log(tree.search(tree.root, 30));
 // console.log(tree.min(tree.root));
 tree.delete(tree.root, 10);
-
-tree.levelOrder();
+console.log(tree.isBST());
+// tree.levelOrder();

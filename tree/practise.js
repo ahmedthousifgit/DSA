@@ -1,4 +1,3 @@
-// validate bst
 class Node {
   constructor(value) {
     this.value = value;
@@ -6,6 +5,7 @@ class Node {
     this.right = null;
   }
 }
+
 class binarySearchTree {
   constructor() {
     this.root = null;
@@ -13,6 +13,7 @@ class binarySearchTree {
   isEmpty() {
     return this.root === null;
   }
+
   insert(value) {
     const newNode = new Node(value);
     if (this.isEmpty()) {
@@ -50,34 +51,6 @@ class binarySearchTree {
     }
   }
 
-  // isBst() {
-  //   return this.isValid(this.root, -Infinity, Infinity);
-  // }
-  // isValid(node, min, max) {
-  //   if (!node) {
-  //     return true;
-  //   }
-  //   if (node.value <= min || node.value >= max) {
-  //     return false;
-  //   }
-  //   return (
-  //     this.isValid(node.left, min, node.value) &&
-  //     this.isValid(node.right, node.value, max)
-  //   );
-  // }
-
-  isBST(node, min, max) {
-    if (!node) {
-      return true;
-    }
-    if (node.value < min || node.value > max) {
-      return false;
-    }
-    return (
-      this.isBST(node.left, min, node.value) &&
-      this.isBST(node.right, node.value, max)
-    );
-  }
   min(root) {
     if (!root.left) {
       return root.value;
@@ -93,11 +66,9 @@ class binarySearchTree {
       return this.max(root.right);
     }
   }
-
   delete(value) {
     return this.deleteNode(this.root, value);
   }
-
   deleteNode(root, value) {
     if (root === null) {
       return root;
@@ -120,27 +91,47 @@ class binarySearchTree {
     return root;
   }
 
-  height(root) {
-    if (!root) {
-      return 0;
-    } else {
-      const leftHeight = this.height(root.left);
-      const rightHeight = this.height(root.right);
-      return Math.max(leftHeight, rightHeight) + 1;
+  levelOrder() {
+    let que = [];
+    que.push(this.root);
+    while (que.length) {
+      let curr = que.shift();
+      console.log(curr.value);
+      if (curr.left) {
+        que.push(curr.left);
+      }
+      if (curr.right) {
+        que.push(curr.right);
+      }
     }
   }
+  isBST() {
+    return this.isValid(this.root, -Infinity, Infinity);
+  }
+  isValid(node, min, max) {
+    if (!node) {
+      return true;
+    }
+    if (node.value < min || node.value > max) {
+      return false;
+    }
+    return (
+      this.isValid(node.left, min, node.value) &&
+      this.isValid(node.right, node.value, max)
+    );
+  }
+
+  
 }
 
 const tree = new binarySearchTree();
 tree.insert(10);
-tree.insert(5);
-tree.insert(15);
-tree.insert(3);
-tree.insert(7);
-tree.insert(12);
-
-// tree.delete(tree.root, 10);
-// console.log(tree.search(tree.root, 10));
-// console.log(tree.isBST());
+tree.insert(20);
+tree.insert(30);
+tree.insert(40);
+tree.insert(50);
+// console.log(tree.search(tree.root, 31));
 // console.log(tree.max(tree.root));
-console.log(tree.height(tree.root));
+// tree.delete(tree.root, 10);
+console.log(tree.isBST());
+// tree.levelOrder();
