@@ -120,18 +120,25 @@ class binarySearchTree {
       this.isValid(node.right, node.value, max)
     );
   }
-
-  
+  height(node) {
+    if (!node) {
+      return 0;
+    }
+    const leftHeight = this.height(node.left);
+    const rightHeight = this.height(node.right);
+    return Math.max(leftHeight, rightHeight) + 1;
+  }
 }
 
 const tree = new binarySearchTree();
 tree.insert(10);
-tree.insert(20);
-tree.insert(30);
-tree.insert(40);
-tree.insert(50);
+tree.insert(5);
+tree.insert(15);
+tree.insert(3);
+tree.insert(7);
 // console.log(tree.search(tree.root, 31));
 // console.log(tree.max(tree.root));
 // tree.delete(tree.root, 10);
 console.log(tree.isBST());
+console.log(tree.height(tree.root));
 // tree.levelOrder();

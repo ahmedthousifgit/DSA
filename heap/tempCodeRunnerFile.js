@@ -1,0 +1,1 @@
+let currentIndex = heap.length - 1;
