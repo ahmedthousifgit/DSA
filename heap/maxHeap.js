@@ -75,6 +75,14 @@ class maxHeap {
       this.heapifyDown(i);
     }
   }
+
+  heapSort() {
+    const sortedArray = [];
+    while (this.heap.length > 0) {
+      sortedArray.push(this.remove());
+    }
+    return sortedArray;
+  }
 }
 
 const heaps = new maxHeap();
@@ -84,3 +92,5 @@ heaps.buildHeapFromArray([3, 7, 2, 1, 9, 8]);
 heaps.insert(84);
 
 console.log(heaps.heap);
+
+console.log(heaps.heapSort());

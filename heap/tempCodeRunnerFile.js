@@ -1,1 +1,1 @@
-let currentIndex = heap.length - 1;
+[3, 7, 2, 1, 9, 8]
