@@ -79,7 +79,7 @@ class maxHeap {
   heapSort() {
     const sortedArray = [];
     while (this.heap.length > 0) {
-      sortedArray.push(this.remove());
+      sortedArray.unshift(this.remove());
     }
     return sortedArray;
   }
