@@ -39,6 +39,19 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
 
+  dfs(startVertex, visited = {}) {
+    if (!this.adjacencyList[startVertex]) return;
+
+    console.log(startVertex);
+    visited[startVertex] = true;
+
+    for (const neighbor of this.adjacencyList[startVertex]) {
+      if (!visited[neighbor]) {
+        this.dfs(neighbor, visited);
+      }
+    }
+  }
+
   display() {
     for (let vertex in this.adjacencyList) {
       console.log(vertex + "-> " + [...this.adjacencyList[vertex]]);

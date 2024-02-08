@@ -47,6 +47,7 @@ class Graph {
       }
     }
   }
+
   display() {
     for (let vertex in this.adjacencyList) {
       console.log(vertex + "-> " + [...this.adjacencyList[vertex]]);
@@ -72,5 +73,6 @@ graph.display();
 // console.log(graph.hasEdge("C", "A"));
 console.log("BFS");
 graph.bfs("A");
+
 // graph.display();
 // console.log(graph.hasEdge("C", "A"));
