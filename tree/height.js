@@ -85,3 +85,5 @@ bst.insert(15);
 bst.insert(3);
 bst.insert(7);
 console.log("height:", bst.height(bst.root));
+
+
