@@ -74,9 +74,10 @@ graph.addVertex("C");
 graph.addEdge("A", "B");
 graph.addEdge("A", "C");
 graph.addEdge("B", "C");
-// graph.removeEdge("A", "B");
-// graph.removeVertex("B");
+graph.removeEdge("A", "B");
+graph.removeVertex("B");
 
 graph.display();
 console.log(graph.countEdge());
 console.log(graph.hasEdge("C", "A"));
+
