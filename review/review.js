@@ -1,3 +1,4 @@
+// trie
 class TrieNode {
   constructor() {
     this.children = {};
@@ -11,7 +12,7 @@ class Trie {
   insert(word) {
     let currentNode = this.root;
     for (let i = 0; i < word.length; i++) {
-      const char = word[i];
+        let char = word[i]
       if (!currentNode.children[char]) {
         currentNode.children[char] = new TrieNode();
       }
@@ -19,11 +20,10 @@ class Trie {
     }
     currentNode.isEndOfWord = true;
   }
-
   search(word) {
     let currentNode = this.root;
     for (let i = 0; i < word.length; i++) {
-      const char = word[i];
+      let char = word[i];
       if (!currentNode.children[char]) {
         return false;
       }
@@ -31,7 +31,6 @@ class Trie {
     }
     return currentNode.isEndOfWord;
   }
-
   startsWith(prefix) {
     let currentNode = this.root;
     for (let i = 0; i < prefix.length; i++) {
@@ -43,14 +42,11 @@ class Trie {
     }
     return true;
   }
-
-
 }
 
 const trie = new Trie();
 trie.insert("app");
-trie.insert("apple");
 trie.insert("apply");
-
-console.log(trie.startsWith("ba"));
+trie.insert("apples");
 console.log(trie.search("apple"));
+console.log(trie.startsWith("app"));

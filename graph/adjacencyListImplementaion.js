@@ -25,6 +25,14 @@ class Graph {
       this.adjacencyList[vertex2].has(vertex1)
     );
   }
+
+  countEdge() {
+    let edgeCount = 0;
+    for (let vertex in this.adjacencyList) {
+      edgeCount += this.adjacencyList[vertex].size;
+    }
+    return edgeCount / 2;
+  }
   removeEdge(vertex1, vertex2) {
     this.adjacencyList[vertex1].delete(vertex2);
     this.adjacencyList[vertex2].delete(vertex1);
@@ -65,9 +73,10 @@ graph.addVertex("B");
 graph.addVertex("C");
 graph.addEdge("A", "B");
 graph.addEdge("A", "C");
-graph.removeEdge("A", "B");
-graph.removeVertex("B");
+graph.addEdge("B", "C");
+// graph.removeEdge("A", "B");
+// graph.removeVertex("B");
 
 graph.display();
-
+console.log(graph.countEdge());
 console.log(graph.hasEdge("C", "A"));
